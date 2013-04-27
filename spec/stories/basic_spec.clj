@@ -42,12 +42,14 @@
     (create-order {:title "product #2"})
     )
 
-  (defstory "adding to your cart"
-    (As admin)
-    (Given user "product #1")
-    (When )
-    (When (add-to-cart "product #1"))
-    (Then (cart-has? "product #1")
-          (not (cart-has? "product #2"))))
+  (defstory "admins can refund payments"
+    (Given payment-1 (setup-paypal-payment 200)
+           order-1 (setup-order {:products ["product #1" "product #2"]
+                                 :payments [payment-1]})
+           customer (setup-customer {:orders [order-1]})
+           admin (setup-admin))
+    (When (refund-payment customer "product #1"))
+    (Then (has-product? customer "product #2")
+          (not (has-product "product #1"))))
 
   )
