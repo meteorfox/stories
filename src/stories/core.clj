@@ -11,8 +11,8 @@
 
 (defmacro defstory [title Given When Then]
   `(describe ~title
-     (let [~@(rest Given)]
-       ~@(rest When)
-       ~@(for [then (rest Then)]
-           `(it ~(str then)
+     ~@(for [then (rest Then)]
+         `(it ~(str then)
+            (let [~@(rest Given)]
+              ~@(rest When)
               (should ~then))))))
