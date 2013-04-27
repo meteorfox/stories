@@ -9,10 +9,16 @@
   `(before
      ~@things))
 
-(defmacro defstory [title Given When Then]
-  `(describe ~title
-     ~@(for [then (rest Then)]
-         `(it ~(str then)
+(defmacro defstory [topic Given When Then]
+  `(describe ~topic
+     ~@(for [g (partition 2 (rest Given))]
+         `(it (str "Given " ~@(interpose " " (map str g)))
+            (should true)))
+     ~@(for [w (rest When)]
+         `(it (str "When " ~@(str w))
+            (should true)))
+     ~@(for [t (rest Then)]
+         `(it (str "Then " ~(str t))
             (let [~@(rest Given)]
               ~@(rest When)
-              (should ~then))))))
+              (should ~t))))))
