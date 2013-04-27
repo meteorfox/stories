@@ -5,11 +5,12 @@
 (defsuite "carts"
 
   (defbackground
+    (setup-database)
     (setup-product {:title "product #1" :price 200})
     (setup-product {:title "product #2" :price 300}))
 
   (defstory "just visiting"
-    (Given visitor (setup-visitor "larry"))
+    (Given larry (setup-visitor))
     (When (add-to-cart larry "product #1"))
     (Then (= [] (products-in-cart larry))
           (= :sign-in (redirected-to larry))))
@@ -39,7 +40,7 @@
   (defstory "creating products"
     (Given bob (setup-admin))
     (When (create-product bob {:title "product #3"}))
-    (Then (= (map :title available-products)
+    (Then (= (map :title (available-products))
              #{"product #1", "product #2", "product #3"})))
 
   )
@@ -47,6 +48,7 @@
 (defsuite "refunds"
 
   (defbackground
+    (setup-database)
     (setup-product {:title "product #1" :price 200})
     (setup-product {:title "product #2" :price 300}))
 

@@ -1,18 +1,18 @@
 (ns stories.core
-  (:require [speclj.core :refer :all])
-  )
+  (:require [speclj.core :refer :all]))
 
 (defmacro defsuite [title & things]
-  )
+  `(describe ~title
+     ~@things))
 
 (defmacro defbackground [& things]
-  )
+  `(before
+     ~@things))
 
-(defmacro defstory [title as given upon then]
-  ;; (prn (concat (rest given)))
-  ;; `(describe ~title
-  ;;    (it "TEST"
-  ;;      (let [~@(concat (rest given))]
-  ;;        (should= 3 4)))
-  ;;    )
-  )
+(defmacro defstory [title Given When Then]
+  `(describe ~title
+     (let [~@(rest Given)]
+       ~@(rest When)
+       ~@(for [then (rest Then)]
+           `(it ~(str then)
+              (should ~then))))))
