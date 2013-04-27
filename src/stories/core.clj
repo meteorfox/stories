@@ -2,6 +2,12 @@
   (:require [speclj.core :refer :all])
   )
 
+(defmacro defsuite [title & things]
+  )
+
+(defmacro defbackground [& things]
+  )
+
 (defmacro defstory [title as given upon then]
   ;; (prn (concat (rest given)))
   ;; `(describe ~title
