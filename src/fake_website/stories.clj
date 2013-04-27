@@ -7,8 +7,13 @@
 ;; step definitions have to be THIN. not doing too much translation
 ;; between the DSL and the real code. otherwise it becomes useless.
 
+(def db (atom nil))
+
+
+;; test setup
+
 (defn setup-database []
-  )
+  (reset! db {}))
 
 (defn setup-product [mapping]
   )
@@ -29,8 +34,7 @@
   )
 
 
-
-
+;; user actions
 
 (defn add-to-cart [who title]
   )
@@ -45,6 +49,7 @@
   )
 
 
+;; user predicates
 
 (defn products-in-cart [user]
   )
