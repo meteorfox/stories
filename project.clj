@@ -1,4 +1,4 @@
-(defproject stories "0.1.0-SNAPSHOT"
+(defproject stories "0.1.0"
   :description "Freeform BDD lib for Clojure"
   :url "https://github.com/sdegutis/stories"
   :license {:name "MIT" :url "http://opensource.org/licenses/MIT"}
