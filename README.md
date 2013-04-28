@@ -71,6 +71,8 @@ Freeform BDD lib for Clojure
   )
 ```
 
+![sshot](etc/sshot.png)
+
 ## License
 
 Copyright © 2013 Steven Degutis
