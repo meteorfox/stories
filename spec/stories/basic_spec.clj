@@ -2,7 +2,7 @@
   (:require [stories.core :refer :all]
             [fake-website.stories :refer :all]))
 
-(defsuite "carts"
+(deffeature "carts"
 
   (defbackground
     (setup-database)
@@ -46,7 +46,7 @@
 
   )
 
-(defsuite "refunds"
+(deffeature "refunds"
 
   (defbackground
     (setup-database)
