@@ -2,6 +2,10 @@
 
 Freeform BDD lib for Clojure
 
+## Install
+
+Get it from clojars
+
 ## Usage
 
 ```clojure
@@ -9,7 +13,7 @@ Freeform BDD lib for Clojure
   (:require [stories.core :refer :all]
             [fake-website.stories :refer :all]))
 
-(defsuite "carts"
+(deffeature "carts"
 
   (defbackground
     (setup-database)
@@ -53,7 +57,7 @@ Freeform BDD lib for Clojure
 
   )
 
-(defsuite "refunds"
+(deffeature "refunds"
 
   (defbackground
     (setup-database)
