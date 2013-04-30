@@ -1,7 +1,7 @@
 (ns stories.core
   (:require [speclj.core :refer :all]))
 
-(defmacro defsuite [title & things]
+(defmacro deffeature [title & things]
   `(describe ~title
      ~@things))
 
